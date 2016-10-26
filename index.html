@@ -27,13 +27,84 @@
 			<div class="slides">
 
 				<section>
-					<h2>Praktyka Optymalizacji</h2>
-					<p>Cykliczny Problem Gniazdowy</p>
+					<p>Praktyka Optymalizacji</p>
+					<h2>Szybki algorytm rozwiązywania cyklicznego problemu gniazdowego</h2>
 
 					<div class='Authors'>
 						<p>@Krzysztof Platis</p>
 						<p>@Artur Rosa</p>
 					</div>
+				</section>
+
+				<section>
+					<section>
+						<h2>Elastyczny problem gniazdowy</h2>
+					</section>
+
+					<section>
+						<p>$\mathcal{J} = \{1,2,...,n\}\ $ – zbiór zadań</p>
+						<p>$\mathcal{M} = \{1,2,...,m\}\ $ – zbiór maszyn</p>
+						<p>$\mathcal{O} = \{1,2,...,m\}\ $ – zbiór operacji</p>
+					</section>
+
+					<section>
+						<p><strong>Zadanie</strong> to ciąg operacji występujących zgodnie z porządkiem technologicznym. Zbiór operacji $\ \mathcal{O}\ $ można więc rozbić na ciągi odpowiadające zadaniom.</p>
+
+						<p><strong>Operacja</strong> może być wykonywana na pewnym podzbiorze maszyn. Musi natomiast być wykonana bez przerywania na jednej z nich, a czas jej wykonania zależy od wydajności przydzielonej maszyny.</p>
+					</section>
+
+					<section>
+						<h3>Elastyczny problem gniazdowy</h3>
+						<ul>
+							<li>przydzielić operacje do maszyn</li>
+							<li>wyznaczyć kolejność wykonywania operacji na maszynach (zgodnie z relacją porządku technologicznego)</li>
+							<li>zoptymalizować pewne kryterium</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>$\mathcal{M}^i \in \mathcal{M}\ \ (i \in \mathcal{O})\ $ – zbiór maszyn na których można wykonać operację $\ i$</p>
+
+						<p>$\mu_i \in \mathcal{M}^i\ \ (i \in \mathcal{O})\ $ – maszyna przydzielona do operacji $\ i$</p>
+
+						<p>$\mathcal{O}^l = \{i \in \mathcal{O} : \mu_i=l\}\ $ – zbiór operacji przydzielonych do maszyny $\ l$</p>
+					</section>
+
+					<section>
+						<p>$\pi_l\ $ – pewna permutacja elementów ze zbioru $\ \mathcal{O}^l$</p>
+
+						<p>$\Pi_l\ $ – zbiór wszystkich permutacji elementów $\ \mathcal{O}^l$</p>
+
+						<p>$\pi = (\pi_1, \pi_2, ..., \pi_m)\ $ – kolejność wykonywania operacji na maszynach (konkatenacja ciągów $\ \pi_i \in \Pi_i\ $ dla $\ i \in \mathcal{M}$)</p>
+
+						<p>$\Phi\ $ – zbiór wszystkich takich $\ \pi$</p>
+					</section>
+
+					<section>
+						<p>$\pi \in \Phi\ $ jednoznacznie określa przydział operacji do maszyn, a także kolejność wykonywania operacji.</p>
+					</section>
+
+					<section>
+						<p>Rozwiązanie $\ \pi \in \Phi\ $ może być reprezentowane przez <strong>graf skierowany</strong> $\ \mathcal{H}(\pi) = (\mathcal{V}, \mathcal{E}(\pi))$.</p>
+					</section>
+
+					<section>
+						<p><strong>Wierzchołkami</strong> grafu $\mathcal{H}(\pi)$ są operacje ( $\mathcal{V} = \mathcal{O}$ ). Waga wierzchołka $\ i\ $ jest równa $\ p_{v,\mu_i}$, czyli czasowi wykonania operacji $\ v\ $ na maszynie $\ \mu_i$.</p>
+
+						<p><strong>Zbiór łuków</strong> grafu jest sumą zbiorów $\ \mathcal{E}(\pi) = \mathcal{R} \cup \mathcal{K}(\pi)$.</p>
+
+					</section>
+					<section>
+						<p>$\mathcal{R} = \bigcup\limits_{j=1}^n \bigcup\limits_{i=1}^{o_j-1} \{\ (\ \hat{j}_i,\ \hat{j}_{i+1}\ )\ \}\ $</p>
+
+						<p>gdzie $\ o_j\ $ jest liczbą operacji zadania $\ j\ $, a $\ \hat{j} \ $ jest ciągiem operacji zadania $\ j\ $ w porządku technologicznym. Zawiera łuki reprezentujące porządek technologiczny.</p>
+					</section>
+					<section>
+						<p>$\mathcal{K}(\pi) = \bigcup\limits_{k=1}^m \bigcup\limits_{i=1}^{|\mathcal{O}^k|-1} \{\ (\ \pi_k(i),\ \pi_k(i+1)\ )\ \}\ $</p>
+
+						<p>Zawiera łuki łączące operacje wykonywane na tej samej maszynie, a zatem reprezentujące kolejność $\pi_k$ operacji na maszynie $\ k\ $ (dla $k \in \mathcal{M} $)</p>
+						
+					</section>
 				</section>
 
 				<section>
