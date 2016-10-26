@@ -176,29 +176,54 @@
 					<section>
 						<p><strong>Zbiór łuków</strong> grafu $\ \mathcal{G}^\oplus\ $ definiujemy jako</p>
 
-						<p>$\mathcal{E}^\oplus(\pi) = \mathcal{E}^1(\pi)\ \cup\ \mathcal{E}^2(\pi)\ \cup\ ...\ \cup\ \mathcal{E}^{m+1}(\pi)\ \cup\ \mathcal{W}$,</p>
+						<p>$\mathcal{E}^\oplus(\pi) = \mathcal{E}^1(\pi)\cup\mathcal{E}^2(\pi)\cup\ ...\ \cup\mathcal{E}^{m+1}(\pi)\cup\mathcal{W}$,</p>
+
+						<p>gdzie zbiór $\ \mathcal{W}\ $ zawiera łuki łączące ostatnią operację określonego MPS-a z pierwszą operacją kolejnego MPS-a wykonywaną na tej samej maszynie:</p>
+
+						<p>$\mathcal{W} = \{(u,v)\in\mathcal{B}^l\times\mathcal{A}^{l+1} :\mu_u=\mu_v,\ l=1,2,...,m\}$.</p>
 					</section>
 				</section>
 
 				<section>
 					<section>
-						<h2>Wyzanaczanie minimalnego czasu cyklu</h2>
+						<h2>Wyzanaczanie minimalnego czasu cyklu dla danego rozwiązania problemu CFJS</h2>
 					</section>
 
 					<section>
-						<p>Zadanie polega na wyznaczeniu minimalnego czasu cyklu dla ustalonej kolejności wykonywania operacji na maszynach ($\ \pi \in \Phi\ $).</p>
+						<p>Zadanie polega na wyznaczeniu <strong>minimalnego czasu cyklu</strong> dla ustalonej kolejności wykonywania operacji na maszynach ($\ \pi \in \Phi\ $).</p>
+					</section>
+
+					<section>
+						<p>Niech $\ a \in \mathcal{A}^1\ $ będzię wierzchołkiem odpowiadającym pierwszej operacji wykonywanej na pewnej maszynie w pierwszym MPS-ie. Poprzez $\ a^l\ $ oznaczmy wierzchołek odpowiadający tej samej operacji wykonywaną w $\ l$-tym MPS-ie. Zatem z definicji grafu cyklicznego $\ a^l = a+(l-1)\cdot o$.</p>
+					</section>
+
+					<section>
+						<p>Niech $\ L^l(a,a^l)\ $ będzie długością najdłuższej drogi w grafie $\ \mathcal{G}^\oplus(\pi)\ $ z wierzchołka $\ a\ $ do wierzchołka $\ a^l\ $ (dla$\ \ l = 2,3,...,m+1$).</p>
+					</section>
+
+					<section>
+						<p>Niech $\ \lambda\ $ będzie macierzą o wymiarach $\ m\times m$. Elementy tej macierzy definiujemy następująco:</p>
+
+						<p>$\lambda_{a,l} = L^{l+1}(a,a^{l+1})\ /\ l$,</p>
+
+						<p>gdzie, $\ a\in \mathcal{A}^1$, oraz $\ l = 1,2,...,m$.</p>
+					</section>
+
+					<section>
+						<p>Wartość <strong>maksymalnego elementu macierzy $\lambda$</strong> oznaczmy jako:</p>
+
+						<p>\[\begin{aligned}
+						
+						\Lambda^*(\pi) = \max\limits_{\upsilon \in A^1} \max\limits_{2 \leq l \leq \eta} \left\{ \lambda_{\upsilon, l}\right\}.
+
+						\end{aligned} \]</p>
+
+						<p>Dla ustalonej permutacji $\pi \in \Phi$ wartość $\ \Lambda^*(\pi)\ $ jest szukanym <strong>minimalnym czasem cyklu</strong>.</p>
+
+
 					</section>
 				</section>
 
-				<section>
-					<h3>Maksymalny element macierzy</h3>
-
-					\[\begin{aligned}
-					
-					\Lambda^*(\pi) = \max\limits_{\upsilon \in A^1} \max\limits_{2 \leq l \leq \eta} \left\{ \lambda_{\upsilon, l}\right\}
-
-					\end{aligned} \]
-				</section>
 
 			</div>
 
