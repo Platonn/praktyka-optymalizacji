@@ -42,13 +42,13 @@
 					</section>
 
 					<section>
-						<p>$\mathcal{J} = \{1,2,...,n\}\ $ – zbiór zadań</p>
-						<p>$\mathcal{M} = \{1,2,...,m\}\ $ – zbiór maszyn</p>
-						<p>$\mathcal{O} = \{1,2,...,o\}\ $ – zbiór operacji</p>
+						<p>$\mathcal{J} = \{1,2,...,n\}$ – zbiór zadań</p>
+						<p>$\mathcal{M} = \{1,2,...,m\}$ – zbiór maszyn</p>
+						<p>$\mathcal{O} = \{1,2,...,o\}$ – zbiór operacji</p>
 					</section>
 
 					<section>
-						<p><strong>Zadanie</strong> to ciąg operacji występujących zgodnie z porządkiem technologicznym. Zbiór operacji $\ \mathcal{O}\ $ można więc rozbić na ciągi odpowiadające zadaniom.</p>
+						<p><strong>Zadanie</strong> to ciąg operacji występujących zgodnie z porządkiem technologicznym. Zbiór operacji $\mathcal{O}$ można więc rozbić na ciągi odpowiadające zadaniom.</p>
 
 						<p><strong>Operacja</strong> może być wykonywana na pewnym podzbiorze maszyn. Musi natomiast być wykonana bez przerywania na jednej z nich, a czas jej wykonania zależy od wydajności przydzielonej maszyny.</p>
 					</section>
@@ -63,46 +63,46 @@
 					</section>
 
 					<section>
-						<p>$\mathcal{M}^i \in \mathcal{M}\ \ (i \in \mathcal{O})\ $ – zbiór maszyn na których można wykonać operację $\ i$</p>
+						<p>$\mathcal{M}^i \in \mathcal{M}\ \ (i \in \mathcal{O})$ – zbiór maszyn na których można wykonać operację $i$</p>
 
-						<p>$\mu_i \in \mathcal{M}^i\ \ (i \in \mathcal{O})\ $ – maszyna przydzielona do operacji $\ i$</p>
+						<p>$\mu_i \in \mathcal{M}^i\ (i \in \mathcal{O})$ – maszyna przydzielona do operacji $i$</p>
 
-						<p>$\mathcal{O}^l = \{i \in \mathcal{O} : \mu_i=l\}\ $ – zbiór operacji przydzielonych do maszyny $\ l$</p>
+						<p>$\mathcal{O}^l = \{i \in \mathcal{O} : \mu_i=l\}$ – zbiór operacji przydzielonych do maszyny $l$</p>
 					</section>
 
 					<section>
-						<p>$\pi_l\ $ – pewna permutacja elementów ze zbioru $\ \mathcal{O}^l$</p>
+						<p>$\pi_l$ – pewna permutacja elementów ze zbioru $\mathcal{O}^l$</p>
 
-						<p>$\Pi_l\ $ – zbiór wszystkich permutacji elementów $\ \mathcal{O}^l$</p>
+						<p>$\Pi_l$ – zbiór wszystkich permutacji elementów $\mathcal{O}^l$</p>
 
-						<p>$\pi = (\pi_1, \pi_2, ..., \pi_m)\ $ – kolejność wykonywania operacji na maszynach (konkatenacja ciągów $\ \pi_i \in \Pi_i\ $ dla $\ i \in \mathcal{M}$)</p>
+						<p>$\pi = (\pi_1, \pi_2, ..., \pi_m)$ – kolejność wykonywania operacji na maszynach (konkatenacja ciągów $\pi_i \in \Pi_i$ dla $i \in \mathcal{M}$)</p>
 
-						<p>$\Phi\ $ – zbiór wszystkich takich $\ \pi$</p>
+						<p>$\Phi$ – zbiór wszystkich takich $\pi$</p>
 					</section>
 
 					<section>
-						<p>$\pi \in \Phi\ $ jednoznacznie określa przydział operacji do maszyn, a także kolejność wykonywania operacji.</p>
+						<p>$\pi \in \Phi$ jednoznacznie określa przydział operacji do maszyn, a także kolejność wykonywania operacji.</p>
 					</section>
 
 					<section>
-						<p>Rozwiązanie $\ \pi \in \Phi\ $ może być reprezentowane przez <strong>graf skierowany</strong> $\ \mathcal{H}(\pi) = (\mathcal{V}, \mathcal{E}(\pi))$.</p>
+						<p>Rozwiązanie $\pi \in \Phi$ może być reprezentowane przez <strong>graf skierowany</strong> $\mathcal{H}(\pi) = (\mathcal{V}, \mathcal{E}(\pi))$.</p>
 					</section>
 
 					<section>
-						<p><strong>Wierzchołkami</strong> grafu $\mathcal{H}(\pi)$ są operacje ( $\mathcal{V} = \mathcal{O}$ ). Waga wierzchołka $\ i\ $ jest równa $\ p_{v,\mu_i}$, czyli czasowi wykonania operacji $\ v\ $ na maszynie $\ \mu_i$.</p>
+						<p><strong>Wierzchołkami</strong> grafu $\mathcal{H}(\pi)$ są operacje ($\mathcal{V} = \mathcal{O}$). Waga wierzchołka $i$ jest równa $p_{v,\mu_i}$, czyli czasowi wykonania operacji $v$ na maszynie $\mu_i$.</p>
 
-						<p><strong>Zbiór łuków</strong> grafu jest sumą zbiorów $\ \mathcal{E}(\pi) = \mathcal{R} \cup \mathcal{K}(\pi)$.</p>
+						<p><strong>Zbiór łuków</strong> grafu jest sumą zbiorów $\mathcal{E}(\pi) = \mathcal{R} \cup \mathcal{K}(\pi)$.</p>
 
 					</section>
 					<section>
 						<p>$\mathcal{R} = \bigcup\limits_{j=1}^n \bigcup\limits_{i=1}^{o_j-1} \{\ (\ \hat{j}_i,\ \hat{j}_{i+1}\ )\ \}\ $</p>
 
-						<p>gdzie $\ o_j\ $ jest liczbą operacji zadania $\ j\ $, a $\ \hat{j} \ $ jest ciągiem operacji zadania $\ j\ $ w porządku technologicznym. Zawiera łuki reprezentujące porządek technologiczny.</p>
+						<p>gdzie $o_j$ jest liczbą operacji zadania $j$, a $\hat{j} $ jest ciągiem operacji zadania $j$ w porządku technologicznym. Zawiera łuki reprezentujące porządek technologiczny.</p>
 					</section>
 					<section>
-						<p>$\mathcal{K}(\pi) = \bigcup\limits_{k=1}^m \bigcup\limits_{i=1}^{|\mathcal{O}^k|-1} \{\ (\ \pi_k(i),\ \pi_k(i+1)\ )\ \}\ $</p>
+						<p>$\mathcal{K}(\pi) = \bigcup\limits_{k=1}^m \bigcup\limits_{i=1}^{|\mathcal{O}^k|-1} \{\ (\ \pi_k(i),\ \pi_k(i+1)\ )\ \}$</p>
 
-						<p>Zawiera łuki łączące operacje wykonywane na tej samej maszynie, a zatem reprezentujące kolejność $\pi_k$ operacji na maszynie $\ k\ $ (dla $k \in \mathcal{M} $)</p>
+						<p>Zawiera łuki łączące operacje wykonywane na tej samej maszynie, a zatem reprezentujące kolejność $\pi_k$ operacji na maszynie $k$ (dla $k \in \mathcal{M} $)</p>
 					</section>
 				</section>
 
@@ -112,7 +112,7 @@
 					</section>
 
 					<section>
-						<p>Ustalony zbiór zadań <strong>MPS</strong> (ang. minimal part set) jest wykonywany <strong>wielokrotnie</strong>. Zakładamy, że w każdym z MPS-ów, na każdej maszynie operacje są wykonywane w takiej samej kolejności, zatem kolejność wykonywania operacji może być reprezentowana przez $\ \pi \in \Phi\ $ dla pierwszego MPS-a.</p>
+						<p>Ustalony zbiór zadań <strong>MPS</strong> (ang. minimal part set) jest wykonywany <strong>wielokrotnie</strong>. Zakładamy, że w każdym z MPS-ów, na każdej maszynie operacje są wykonywane w takiej samej kolejności, zatem kolejność wykonywania operacji może być reprezentowana przez $\pi \in \Phi$ dla pierwszego MPS-a.</p>
 					</section>
 
 					<section>
@@ -120,11 +120,11 @@
 					</section>
 
 					<section>
-						<p>Dla ustalonego $\ \pi \in \Phi$, niech $\ S^k_i\ $ oznacza termin rozpoczęcia wykonywania operacji $\ i\ $ na maszynie $\ \mu_i\ $ w $\ k$-tym cyklu. Jeśli harmonogram jest <strong>cykliczny</strong>, wtedy</p>
+						<p>Dla ustalonego $\pi \in \Phi$, niech $S^k_i$ oznacza termin rozpoczęcia wykonywania operacji $i$ na maszynie $\mu_i$ w $k$-tym cyklu. Jeśli harmonogram jest <strong>cykliczny</strong>, wtedy</p>
 
-						<p>$\ S^k_{\pi(i)} = S^1_{\pi(i)} + (k-1)\cdot T(\pi),$</p>
+						<p>$S^k_{\pi(i)} = S^1_{\pi(i)} + (k-1)\cdot T(\pi),$</p>
 
-						<p>gdzie $\ T(\pi)\ $ jest <strong>czasem cyklu</strong> i zależy od $\ \pi$.</p>
+						<p>gdzie $T(\pi)$ jest <strong>czasem cyklu</strong> i zależy od $\pi$.</p>
 					</section>
 				</section>
 
@@ -134,11 +134,11 @@
 					</section>
 
 					<section>
-						<p>Dla ustalonego rozwiązania $\ \pi \in \Phi\ $ niech $\ \mathcal{H}(\pi) = (\mathcal{V}, \mathcal{E}(\pi))\ $ będzie grafem reprezentującym to rozwiązanie.</p>
+						<p>Dla ustalonego rozwiązania $\pi \in \Phi$ niech $\mathcal{H}(\pi) = (\mathcal{V}, \mathcal{E}(\pi))$ będzie grafem reprezentującym to rozwiązanie.</p>
 					</section>
 
 					<section>
-						<p>Niech $\ \mathcal{H}^l(\pi) = (\mathcal{V}^l, \mathcal{E}^l(\pi))\ $ będzie grafem reprezentującym rozwiązanie $\ \pi\ $ dla $\ l$-tego MPS-a ($\ l = 1, 2, ..., m+1\ $).</p>
+						<p>Niech $\mathcal{H}^l(\pi) = (\mathcal{V}^l, \mathcal{E}^l(\pi))$ będzie grafem reprezentującym rozwiązanie $\pi$ dla $l$-tego MPS-a ($l = 1, 2, ..., m+1$).</p>
 					</section>
 
 					<section>
@@ -152,11 +152,11 @@
 					</section>
 
 					<section>
-						<p>Zdefiniujemy jeszcze pomocnicze podzbiory zbioru $\ \mathcal{V}^l$:</p>
+						<p>Zdefiniujemy jeszcze pomocnicze podzbiory zbioru $\mathcal{V}^l$:</p>
 
 						<p>$\mathcal{A}^l = \{v\in\mathcal{V}^l : v=\pi_j(1)+(l-1)\cdot o \land j \in \mathcal{M}\}$,</p>
 
-						<p>który zawiera pierwsze operacje wykonywane przez poszczególne maszyny w $\ l$-tym MPS-ie oraz</p>
+						<p>który zawiera pierwsze operacje wykonywane przez poszczególne maszyny w $l$-tym MPS-ie oraz</p>
 
 						<p>$\mathcal{B}^l = \{v\in\mathcal{V}^l : v=\pi_j(n_j)+(l-1)\cdot o \land j \in \mathcal{M}\}$,</p>
 
@@ -164,21 +164,21 @@
 					</section>
 
 					<section>
-						<p><strong>Grafem cyklicznym</strong>, dla ustalonej permutacji $\ \pi\in\Phi$, nazwiemy graf $\ \mathcal{G}^\oplus = (\mathcal{V}^\oplus, \mathcal{E}^\oplus(\pi))$.</p>
+						<p><strong>Grafem cyklicznym</strong>, dla ustalonej permutacji $\pi\in\Phi$, nazwiemy graf $\mathcal{G}^\oplus = (\mathcal{V}^\oplus, \mathcal{E}^\oplus(\pi))$.</p>
 					</section>
 
 					<section>
-						<p><strong>Zbiór wierzchołków</strong> grafu $\ \mathcal{G}^\oplus\ $ definiujemy jako</p>
+						<p><strong>Zbiór wierzchołków</strong> grafu $\mathcal{G}^\oplus$ definiujemy jako</p>
 
 						<p>$\mathcal{V}^\oplus = \mathcal{V}^1\ \cup\ \mathcal{V}^2\ \cup\ ...\ \cup\ \mathcal{V}^{m+1}$</p>
 					</section>
 
 					<section>
-						<p><strong>Zbiór łuków</strong> grafu $\ \mathcal{G}^\oplus\ $ definiujemy jako</p>
+						<p><strong>Zbiór łuków</strong> grafu $\mathcal{G}^\oplus$ definiujemy jako</p>
 
 						<p>$\mathcal{E}^\oplus(\pi) = \mathcal{E}^1(\pi)\cup\mathcal{E}^2(\pi)\cup\ ...\ \cup\mathcal{E}^{m+1}(\pi)\cup\mathcal{W}$,</p>
 
-						<p>gdzie zbiór $\ \mathcal{W}\ $ zawiera łuki łączące ostatnią operację określonego MPS-a z pierwszą operacją kolejnego MPS-a wykonywaną na tej samej maszynie:</p>
+						<p>gdzie zbiór $\mathcal{W}$ zawiera łuki łączące ostatnią operację określonego MPS-a z pierwszą operacją kolejnego MPS-a wykonywaną na tej samej maszynie:</p>
 
 						<p>$\mathcal{W} = \{(u,v)\in\mathcal{B}^l\times\mathcal{A}^{l+1} :\mu_u=\mu_v,\ l=1,2,...,m\}$.</p>
 					</section>
@@ -190,27 +190,27 @@
 					</section>
 
 					<section>
-						<p>Zadanie polega na wyznaczeniu <strong>minimalnego czasu cyklu</strong> dla ustalonej kolejności wykonywania operacji na maszynach ($\ \pi \in \Phi\ $).</p>
+						<p>Zadanie polega na wyznaczeniu <strong>minimalnego czasu cyklu</strong> dla ustalonej kolejności wykonywania operacji na maszynach ($\pi \in \Phi$).</p>
 					</section>
 
 					<section>
-						<p>Niech $\ a \in \mathcal{A}^1\ $ będzię wierzchołkiem odpowiadającym pierwszej operacji wykonywanej na pewnej maszynie w pierwszym MPS-ie. Poprzez $\ a^l\ $ oznaczmy wierzchołek odpowiadający tej samej operacji wykonywaną w $\ l$-tym MPS-ie. Zatem z definicji grafu cyklicznego $\ a^l = a+(l-1)\cdot o$.</p>
+						<p>Niech $a \in \mathcal{A}^1$ będzię wierzchołkiem odpowiadającym pierwszej operacji wykonywanej na pewnej maszynie w pierwszym MPS-ie. Poprzez $a^l$ oznaczmy wierzchołek odpowiadający tej samej operacji wykonywaną w $l$-tym MPS-ie. Zatem z definicji grafu cyklicznego $a^l = a+(l-1)\cdot o$.</p>
 					</section>
 
 					<section>
-						<p>Niech $\ L^l(a,a^l)\ $ będzie długością najdłuższej drogi w grafie $\ \mathcal{G}^\oplus(\pi)\ $ z wierzchołka $\ a\ $ do wierzchołka $\ a^l\ $ (dla$\ \ l = 2,3,...,m+1$).</p>
+						<p>Niech $L^l(a,a^l)$ będzie długością najdłuższej drogi w grafie $\mathcal{G}^\oplus(\pi)$ z wierzchołka $a$ do wierzchołka $a^l$ (dla $l = 2,3,...,m+1$).</p>
 					</section>
 
 					<section>
-						<p>Niech $\ \lambda\ $ będzie macierzą o wymiarach $\ m\times m$. Elementy tej macierzy definiujemy następująco:</p>
+						<p>Niech $\lambda$ będzie macierzą o wymiarach $m\times m$. Elementy tej macierzy definiujemy następująco:</p>
 
 						<p>$\lambda_{a,l} = L^{l+1}(a,a^{l+1})\ /\ l$,</p>
 
-						<p>gdzie, $\ a\in \mathcal{A}^1$, oraz $\ l = 1,2,...,m$.</p>
+						<p>gdzie, $a\in \mathcal{A}^1$, oraz $l = 1,2,...,m$.</p>
 					</section>
 
 					<section>
-						<p>Wartość <strong>maksymalnego elementu macierzy $\lambda$</strong> oznaczmy jako:</p>
+						<p>Wartość <strong>maksymalnego elementu macierzy $\lambda$</strong> oznaczmy:</p>
 
 						<p>\[\begin{aligned}
 						
@@ -218,7 +218,7 @@
 
 						\end{aligned} \]</p>
 
-						<p>Dla ustalonej permutacji $\pi \in \Phi$ wartość $\ \Lambda^*(\pi)\ $ jest szukanym <strong>minimalnym czasem cyklu</strong>.</p>
+						<p>Dla ustalonej permutacji $\pi \in \Phi$ wartość $\Lambda^*(\pi)$ jest szukanym <strong>minimalnym czasem cyklu</strong>.</p>
 
 
 					</section>

@@ -10,3 +10,7 @@
 .reveal li {
 	margin-top: 25px;
 }
+
+.reveal .MathJax {
+	margin:0 6px;
+}
