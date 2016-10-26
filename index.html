@@ -44,7 +44,7 @@
 					<section>
 						<p>$\mathcal{J} = \{1,2,...,n\}\ $ – zbiór zadań</p>
 						<p>$\mathcal{M} = \{1,2,...,m\}\ $ – zbiór maszyn</p>
-						<p>$\mathcal{O} = \{1,2,...,m\}\ $ – zbiór operacji</p>
+						<p>$\mathcal{O} = \{1,2,...,o\}\ $ – zbiór operacji</p>
 					</section>
 
 					<section>
@@ -103,7 +103,6 @@
 						<p>$\mathcal{K}(\pi) = \bigcup\limits_{k=1}^m \bigcup\limits_{i=1}^{|\mathcal{O}^k|-1} \{\ (\ \pi_k(i),\ \pi_k(i+1)\ )\ \}\ $</p>
 
 						<p>Zawiera łuki łączące operacje wykonywane na tej samej maszynie, a zatem reprezentujące kolejność $\pi_k$ operacji na maszynie $\ k\ $ (dla $k \in \mathcal{M} $)</p>
-						
 					</section>
 				</section>
 
@@ -136,6 +135,42 @@
 
 					<section>
 						<p>Zadanie polega na wyznaczeniu minimalnego czasu cyklu dla ustalonej kolejności wykonywania operacji na maszynach ($\ \pi \in \Phi\ $).</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Graf cykliczny</h2>
+					</section>
+
+					<section>
+						<p>Dla ustalonego rozwiązania $\ \pi \in \Phi\ $ niech $\ \mathcal{H}(\pi) = (\mathcal{V}, \mathcal{E}(\pi))\ $ będzie grafem reprezentującym to rozwiązanie.</p>
+					</section>
+
+					<section>
+						<p>Niech $\ \mathcal{H}^l(\pi) = (\mathcal{V}^l, \mathcal{E}^l(\pi))\ $ będzie grafem reprezentującym rozwiązanie $\ \pi\ $ dla $\ l$-tego MPS-a ($\ l = 1, 2, ..., m+1\ $).</p>
+					</section>
+
+					<section>
+						<p>Zbiór wierzchołków</p>
+
+						<p>$\mathcal{V}^l = \{v+(l-1)\cdot o : v \in \mathcal{V} \}$.</p>
+
+						<p>Zbiór łuków</p>
+
+						<p>$\mathcal{E}^l = \{ (v,u) : (u+(l-1)\cdot o, v+(l-1)\cdot o) \in \mathcal{E}\}$.</p>
+					</section>
+
+					<section>
+						<p>Zdefiniujemy jeszcze pomocnicze zbiory wierzchołków:</p>
+
+						<p>$\mathcal{A}^l = \{v\in\mathcal{V}^l : v=\pi_j(1)+(l-1)\cdot o \land j \in \mathcal{M}\}$,</p>
+
+						<p>który zawiera pierwsze operacje wykonywane przez poszczególne maszyny w $\ l$-tym MPS-ie oraz</p>
+
+						<p>$\mathcal{B}^l = \{v\in\mathcal{V}^l : v=\pi_j(n_j)+(l-1)\cdot o \land j \in \mathcal{M}\}$,</p>
+
+						<p>który zawiera ostatnie operacje.</p>
 					</section>
 				</section>
 
