@@ -73,11 +73,26 @@ def genSGWeightsFixData(costs, machines):
 		wf_weights[i] = costs[machines[i][0]]
 	return wf_from_o, wf_to_o, wf_weights
 
-def csGraphFromEdges(from_o, to_o, weights, o, m):
+def csGraphFromEdges(o, m, from_o, to_o, weights):
 	# csr_matrix constructor is adding duplicates together
 	N = (m+1)*o+m
 	csr = scipy.sparse.csr_matrix((weights, (from_o, to_o)), shape=(N,N))
 	return csr
+
+def computeLongestPaths(o, machines, csgraph):
+	m = len(machines)
+	N = csgraph.shape[0]
+	first_operations = np.arange(m)+(N-m)
+	longest_paths = -scipy.sparse.csgraph.dijkstra(-csgraph, indices=first_operations)
+	l_matrix = np.zeros((m,m), np.float32)
+	for i in range(len(machines)):
+		indices = (np.arange(m)*o) + (o + machines[i][0])
+		l_matrix[i, ...] = longest_paths[i][indices]
+	return l_matrix
+
+def computeMinimalCycleTime(l_matrix):
+	mct = np.max(l_matrix)
+	return mct
 
 def main():
 	data = importFromFile("data/2017-01-06-00-31-56.npy")
@@ -87,12 +102,21 @@ def main():
 	# >>> data[None][0]
 	# { ... }
 	data = data[None][0]
-	fr,to,we = genGraphData(data['costs'], data['tasks'], data['machines'])
-	sf, st, sw = genSuperGraphData(data['costs'], data['machines'], fr, to, we)
-	csg = csGraphFromEdges(sf, st, sw, len(data['costs']), len(data['machines']))
 
+	costs = data['costs']
+	tasks = data['tasks']
+	machines = data['machines']
+	o, m = len(costs), len(machines)
+	fr,to,we = genGraphData(costs, tasks, machines)
+	sf, st, sw = genSuperGraphData(costs, machines, fr, to, we)
+	csg = csGraphFromEdges(o, m, sf, st, sw)
+
+	print "Compressed sparse graph matrix:"
 	print csg
-	print csg * -1
-
+	print "L matrix:"
+	l_matrix = computeLongestPaths(o, machines, csg)
+	print l_matrix
+	print "Minimal cycle time:"
+	print computeMinimalCycleTime(l_matrix)
 
 main()
