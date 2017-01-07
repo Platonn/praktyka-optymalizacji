@@ -70,4 +70,4 @@ def main():
 	print loadedData
 
 
-main()
+#main()
