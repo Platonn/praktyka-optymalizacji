@@ -23,9 +23,9 @@ def genSuperGraphData(costs, machines, from_o, to_o, weights):
 	o = len(costs)
 	m = len(machines)
 	e = len(weights)
-	super_from_o = np.zeros((e+m)*(m+1), np.uint32)
-	super_to_o = np.zeros((e+m)*(m+1), np.uint32)
-	super_weights = np.zeros((e+m)*(m+1), np.float32)
+	super_from_o = np.zeros((e+m)*(m+1)-m, np.uint32)
+	super_to_o = np.zeros((e+m)*(m+1)-m, np.uint32)
+	super_weights = np.zeros((e+m)*(m+1)-m, np.float32)
 	
 	bridges_from_o, bridges_to_o, bridges_weights = genSGBridgesData(costs, machines)
 	
@@ -34,15 +34,15 @@ def genSuperGraphData(costs, machines, from_o, to_o, weights):
 		super_from_o[offset:offset+e] = from_o+(o*i)
 		super_to_o[offset:offset+e] = to_o+(o*i)
 		super_weights[offset:offset+e] = weights
-		if i < m+1:
+		if i < m:
 			super_from_o[offset+e:offset+e+m] = bridges_from_o+(o*i)
 			super_to_o[offset+e:offset+e+m] = bridges_to_o+(o*i)
 			super_weights[offset+e:offset+e+m] = bridges_weights
 
-	wf_from_o, wf_to_o, wf_weights = genSGWeightsFixData(costs, machines)
-	super_from_o[-m:] = wf_from_o
-	super_to_o[-m:] = wf_to_o
-	super_weights[-m:] = wf_weights
+	#wf_from_o, wf_to_o, wf_weights = genSGWeightsFixData(costs, machines)
+	#super_from_o[-m:] = wf_from_o
+	#super_to_o[-m:] = wf_to_o
+	#super_weights[-m:] = wf_weights
 
 	return super_from_o, super_to_o, super_weights
 
@@ -59,6 +59,7 @@ def genSGBridgesData(costs, machines):
 		bridges_weights[i] = costs[machines[i][0]]
 	return bridges_from_o, bridges_to_o, bridges_weights
 
+'''
 # edges to fix 'vertex weight' problem
 def genSGWeightsFixData(costs, machines):
 	o = len(costs)
@@ -72,6 +73,7 @@ def genSGWeightsFixData(costs, machines):
 		wf_to_o[i] = machines[i][0]
 		wf_weights[i] = costs[machines[i][0]]
 	return wf_from_o, wf_to_o, wf_weights
+'''
 
 def csGraphFromEdges(o, m, from_o, to_o, weights):
 	# csr_matrix constructor is adding duplicates together
@@ -82,7 +84,8 @@ def csGraphFromEdges(o, m, from_o, to_o, weights):
 def computeLongestPaths(o, machines, csgraph):
 	m = len(machines)
 	N = csgraph.shape[0]
-	first_operations = np.arange(m)+(N-m)
+	#first_operations = np.arange(m)+(N-m)
+	first_operations = [ machine[0] for machine in machines ]
 	longest_paths = -scipy.sparse.csgraph.dijkstra(-csgraph, indices=first_operations)
 	l_matrix = np.zeros((m,m), np.float32)
 	for i in range(len(machines)):
@@ -98,6 +101,7 @@ def computeMinimalCycleTime(l_matrix):
 def main():
 	#data = importFromFile("data/parallel.npy")
 	#data = importFromFile("data/steps.npy")
+	#data = importFromFile("data/stepsExtra.npy")
 	#data = importFromFile("data/stepsTasks.npy")
 	data = importFromFile("data/trivial.npy")
 	# SPIKE: hard hack - because of wrong save format as np.array

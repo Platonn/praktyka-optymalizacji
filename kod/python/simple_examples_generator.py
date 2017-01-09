@@ -2,7 +2,6 @@ import numpy as np
 import random
 from code_generator import *
 
-
 def genParallel(o, n):
 	operations = getOperations(o)
 	costs = np.ones((o))
@@ -85,20 +84,21 @@ def main():
 
 	data = genParallel(o, n)
 	filename = exportToFile(data, 'data/parallel.npy')
-	print 'expected T for parallel:', n
+	print 'expected T for parallel:', o/n
+
 
 	data = genSteps(o, n)
 	filename = exportToFile(data, 'data/steps.npy')
-	print 'expected T for steps:', n+1
+	print 'expected T for steps:', o/n+1
+
+	data = genStepsExtra(o, n)
+	filename = exportToFile(data, 'data/stepsExtra.npy')
+	print 'expected T for stepsExtra:', o+1
 
 	m = 5
 	data = genStepsTasks(m)
 	filename = exportToFile(data, 'data/stepsTasks.npy')
-	print 'expected T for stepsTasks:', m+1
-
-	data = genStepsExtra(o, n)
-	filename = exportToFile(data, 'data/stepsExtra.npy')
-	print 'expected T for stepsExtra:', '-'
+	print 'expected T for stepsTasks:', m
 
 	data = genTrivial(o)
 	filename = exportToFile(data, 'data/trivial.npy')
