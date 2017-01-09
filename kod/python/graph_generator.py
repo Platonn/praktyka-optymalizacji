@@ -88,6 +88,7 @@ def computeLongestPaths(o, machines, csgraph):
 	for i in range(len(machines)):
 		indices = (np.arange(m)*o) + (o + machines[i][0])
 		l_matrix[i, ...] = longest_paths[i][indices]
+		l_matrix = l_matrix / (np.arange(1, m+1))
 	return l_matrix
 
 def computeMinimalCycleTime(l_matrix):
@@ -95,7 +96,10 @@ def computeMinimalCycleTime(l_matrix):
 	return mct
 
 def main():
-	data = importFromFile("data/2017-01-06-00-31-56.npy")
+	#data = importFromFile("data/parallel.npy")
+	#data = importFromFile("data/steps.npy")
+	#data = importFromFile("data/stepsTasks.npy")
+	data = importFromFile("data/trivial.npy")
 	# SPIKE: hard hack - because of wrong save format as np.array
 	# >>> data
 	# array({ ... }, dtype=object)

@@ -43,8 +43,9 @@ def getOperations(o):
 	return np.arange(o)
 
 
-def exportToFile(data):
-	filename = genFilename()
+def exportToFile(data, filename=None):
+	if filename is None:
+		filename = genFilename()
 	np.save(filename, data)
 	return filename
 
