@@ -1,6 +1,7 @@
 import numpy as np
 import random
 from code_generator import *
+from graph_generator import solve
 
 def genParallel(o, n):
 	operations = getOperations(o)
@@ -85,23 +86,27 @@ def main():
 	data = genParallel(o, n)
 	filename = exportToFile(data, 'data/parallel.npy')
 	print 'expected T for parallel:', o/n
-
+	print 'result:', solve(filename)
 
 	data = genSteps(o, n)
 	filename = exportToFile(data, 'data/steps.npy')
 	print 'expected T for steps:', o/n+1
+	print 'result:', solve(filename)
 
 	data = genStepsExtra(o, n)
 	filename = exportToFile(data, 'data/stepsExtra.npy')
 	print 'expected T for stepsExtra:', o+1
+	print 'result:', solve(filename)
 
 	m = 5
 	data = genStepsTasks(m)
 	filename = exportToFile(data, 'data/stepsTasks.npy')
 	print 'expected T for stepsTasks:', m
+	print 'result:', solve(filename)
 
 	data = genTrivial(o)
 	filename = exportToFile(data, 'data/trivial.npy')
 	print 'expected T for trivial:', o
+	print 'result:', solve(filename)
 
 main()

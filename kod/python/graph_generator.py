@@ -98,19 +98,14 @@ def computeMinimalCycleTime(l_matrix):
 	mct = np.max(l_matrix)
 	return mct
 
-def main():
-	#data = importFromFile("data/parallel.npy")
-	#data = importFromFile("data/steps.npy")
-	#data = importFromFile("data/stepsExtra.npy")
-	#data = importFromFile("data/stepsTasks.npy")
-	data = importFromFile("data/trivial.npy")
+def solve(data_filepath):
+	data = importFromFile(data_filepath)
 	# SPIKE: hard hack - because of wrong save format as np.array
 	# >>> data
 	# array({ ... }, dtype=object)
 	# >>> data[None][0]
 	# { ... }
 	data = data[None][0]
-
 	costs = data['costs']
 	tasks = data['tasks']
 	machines = data['machines']
@@ -119,12 +114,6 @@ def main():
 	sf, st, sw = genSuperGraphData(costs, machines, fr, to, we)
 	csg = csGraphFromEdges(o, m, sf, st, sw)
 
-	print "Compressed sparse graph matrix:"
-	print csg
-	print "L matrix:"
 	l_matrix = computeLongestPaths(o, machines, csg)
-	print l_matrix
-	print "Minimal cycle time:"
-	print computeMinimalCycleTime(l_matrix)
-
-main()
+	mct = computeMinimalCycleTime(l_matrix)
+	return mct
