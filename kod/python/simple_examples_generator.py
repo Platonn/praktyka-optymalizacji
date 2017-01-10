@@ -5,7 +5,7 @@ from graph_generator import solve
 
 def genParallel(o, n):
 	operations = getOperations(o)
-	costs = np.ones((o))
+	costs = genCosts(operations, 100)
 	tasks = operations.copy().reshape((n,o/n))
 	machines = tasks.copy()
 	result = {
@@ -18,7 +18,7 @@ def genParallel(o, n):
 
 def genSteps(o, n):
 	operations = getOperations(o)
-	costs = np.ones((o))
+	costs = genCosts(operations, 100)
 	tasks = operations.copy().reshape((n,o/n))
 	machines = map(list,tasks+1)
 	machines[0].insert(0,0)
@@ -33,7 +33,7 @@ def genSteps(o, n):
 
 def genStepsExtra(o, n):
 	operations = getOperations(o+1)
-	costs = np.ones((o+1))
+	costs = genCosts(operations, 100)
 
 	tasks = np.arange(o).reshape((n,o/n))	
 	machines = map(list,tasks+1)
@@ -55,7 +55,7 @@ def genStepsExtra(o, n):
 def genStepsTasks(m):
 	o = m*m
 	operations = getOperations(o)
-	costs = np.ones((o))
+	costs = genCosts(operations, 100)
 	tasks = operations.copy().reshape((m,m))
 	machines = [ np.arange(i, m*m, m) for i in range(m) ]
 	result = {
@@ -68,7 +68,7 @@ def genStepsTasks(m):
 
 def genTrivial(o):
 	operations = getOperations(o)
-	costs = np.ones((o))
+	costs = genCosts(operations, 100)
 	tasks = [operations.copy()]
 	machines = tasks
 	result = {
@@ -113,7 +113,7 @@ def main():
 
 	data = genTrivial(o)
 	filename = exportToFile(data, 'data/trivial.npy')
-	expected = len(data['operations'])
+	expected = sum(data['costs'])
 	print 'expected T for trivial:', expected
 	print 'result:', solve(filename)
 

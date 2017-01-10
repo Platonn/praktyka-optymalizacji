@@ -27,7 +27,7 @@ def genData((o, n, o_per_n, m, o_per_m, maxCost)):
 
 
 def genCosts(operations, maxCost):
-	return [random.randint(1, maxCost) for i in operations]
+	return np.array([random.randint(1, maxCost) for i in operations])
 
 
 def genSubsequences(operations, num, o_per_num):
