@@ -85,28 +85,36 @@ def main():
 
 	data = genParallel(o, n)
 	filename = exportToFile(data, 'data/parallel.npy')
-	print 'expected T for parallel:', o/n
+	mc = data['costs'].reshape(data['machines'].shape)
+	expected = np.max(np.sum(mc, axis=1))
+	print 'expected T for parallel:', expected
 	print 'result:', solve(filename)
 
 	data = genSteps(o, n)
 	filename = exportToFile(data, 'data/steps.npy')
-	print 'expected T for steps:', o/n+1
+	mc = [ sum(data['costs'][machine]) for machine in data['machines'] ]
+	expected = max(mc)
+	print 'expected T for steps:', expected
 	print 'result:', solve(filename)
 
 	data = genStepsExtra(o, n)
 	filename = exportToFile(data, 'data/stepsExtra.npy')
-	print 'expected T for stepsExtra:', o+1
+	expected = np.sum(data['costs'])
+	print 'expected T for stepsExtra:', expected
 	print 'result:', solve(filename)
 
 	m = 5
 	data = genStepsTasks(m)
 	filename = exportToFile(data, 'data/stepsTasks.npy')
-	print 'expected T for stepsTasks:', m
+	mc = [ sum(data['costs'][machine]) for machine in data['machines'] ]
+	expected = max(mc)
+	print 'expected T for stepsTasks:', expected
 	print 'result:', solve(filename)
 
 	data = genTrivial(o)
 	filename = exportToFile(data, 'data/trivial.npy')
-	print 'expected T for trivial:', o
+	expected = len(data['operations'])
+	print 'expected T for trivial:', expected
 	print 'result:', solve(filename)
 
 main()
